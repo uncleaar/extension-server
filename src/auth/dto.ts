@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class SignUpBodyDto {
   @ApiProperty({
-    example: 'test@gmai.com',
+    example: 'test@gmail.com',
   })
   email: string;
 
@@ -14,7 +14,7 @@ export class SignUpBodyDto {
 
 export class SignInBodyDto {
   @ApiProperty({
-    example: 'test@gmai.com',
+    example: 'test@gmail.com',
   })
   email: string;
 
