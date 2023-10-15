@@ -7,14 +7,22 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { AuthService } from './auth.service';
 import { GetSessionInfoDto, SignInBodyDto, SignUpBodyDto } from './dto';
+
+import { Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
+  constructor(private authService: AuthService) {}
+
   @Post('sign-up')
   @ApiCreatedResponse()
-  signUp(@Body() body: SignUpBodyDto) {
-    return null;
+  async signUp(@Body() body: SignUpBodyDto, res: Response) {
+    const { accessToken } = await this.authService.signUp(
+      body.email,
+      body.password,
+    );
   }
 
   @Post('sign-in')
