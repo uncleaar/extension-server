@@ -15,6 +15,7 @@ import { GetSessionInfoDto, SignInBodyDto, SignUpBodyDto } from './dto';
 import { Response } from 'express';
 import { AuthGuard } from './auth.guard';
 import { CookieService } from './cookie.service';
+import { SessionInfo } from './session-info.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -66,7 +67,7 @@ export class AuthController {
   })
   @Get('session')
   @UseGuards(AuthGuard)
-  getSession() {
-    return null;
+  getSession(@SessionInfo() session: GetSessionInfoDto) {
+    return session;
   }
 }
