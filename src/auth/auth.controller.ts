@@ -9,8 +9,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { GetSessionInfoDto, SignInBodyDto, SignUpBodyDto } from './auth.dto';
 import { AuthService } from './auth.service';
-import { GetSessionInfoDto, SignInBodyDto, SignUpBodyDto } from './dto';
 
 import { Response } from 'express';
 import { AuthGuard } from './auth.guard';
