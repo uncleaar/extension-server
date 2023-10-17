@@ -13,7 +13,7 @@ export class AccountDto {
 }
 
 export class ChangeAccountDto {
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @IsBoolean()
   @IsOptional()
   isBlockingEnabled?: boolean;
