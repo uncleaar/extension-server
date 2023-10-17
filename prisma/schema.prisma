@@ -17,7 +17,8 @@ model User {
   salt  String
 
   // accountId Int?
-  Account Account?
+  Account   Account?
+  BlockList BlockList?
 }
 
 model Account {
@@ -26,4 +27,35 @@ model Account {
   ownerId           Int     @unique
   isBlockingEnabled Boolean
   owner             User    @relation(fields: [ownerId], references: [id])
+
+  blockList BlockList? @relation(fields: [blockListId], references: [id])
+
+  blockListId Int?
+}
+
+model BlockList {
+  id Int @id @default(autoincrement())
+
+  ownerId Int  @unique
+  owner   User @relation(fields: [ownerId], references: [id])
+
+  items   BlockItem[]
+  Account Account[]
+}
+
+model BlockItem {
+  id Int @id @default(autoincrement())
+
+  blockListId Int
+  blockList   BlockList @relation(fields: [blockListId], references: [id])
+
+  type BlockItemType
+  data String
+
+  createdAt DateTime @default(now())
+}
+
+enum BlockItemType {
+  Website
+  KeyWord
 }
