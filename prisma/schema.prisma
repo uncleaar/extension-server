@@ -15,4 +15,15 @@ model User {
   email String @unique
   hash  String
   salt  String
+
+  // accountId Int?
+  Account Account?
+}
+
+model Account {
+  id Int @id @default(autoincrement())
+
+  ownerId           Int     @unique
+  isBlockingEnabled Boolean
+  owner             User    @relation(fields: [ownerId], references: [id])
 }
