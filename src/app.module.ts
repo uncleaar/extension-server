@@ -6,9 +6,17 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { AccountModule } from './account/account.module';
 import { BlockListModule } from './block-list/block-list.module';
+import { CalendarModule } from './calendar/calendar.module';
 
 @Module({
-  imports: [DbModule, AuthModule, UsersModule, AccountModule, BlockListModule],
+  imports: [
+    DbModule,
+    AuthModule,
+    UsersModule,
+    AccountModule,
+    BlockListModule,
+    CalendarModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
